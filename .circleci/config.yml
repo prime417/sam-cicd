@@ -11,7 +11,7 @@ jobs:
       - node/install-packages:
           pkg-manager: npm
       - run:
-          command: cd hello-world
+          command: cd hello-world/
           name: cd
       - run:
           command: npm run test
