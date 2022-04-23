@@ -19,5 +19,5 @@ workflows:
           s3-bucket: prime123456
           stack-name: staging-stack
           template: template.yaml
-          capabilities: CAPABILITY_NAMED_IAM
+          # capabilities: CAPABILITY_NAMED_IAM
           version:
