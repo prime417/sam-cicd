@@ -16,7 +16,7 @@ workflows:
           name: deploy-staging
           # requires:
           #   - lambda-build
-          s3-bucket: my-s3-bucket
+          s3-bucket: prime123456
           stack-name: staging-stack
           template: template.yaml
           capabilities: CAPABILITY_NAMED_IAM
