@@ -6,18 +6,17 @@ jobs:
     docker:
       - image: 'cimg/node:lts'
     steps:
-      - run: echo "Run your API tests here"
+      - run: npm install
 workflows:
   test_and_deploy:
     jobs:
-      # - lambda_build:
+      - lambda_build:
       - sam/deploy:
           context: personal-AWS-context-<< pipeline.git.branch >>
           name: deploy-staging
-          # requires:
-          #   - lambda-build
+          requires:
+            - lambda-build
           s3-bucket: prime123456
           stack-name: staging-stack
           template: template.yaml
-          # capabilities: CAPABILITY_NAMED_IAM
           version:
