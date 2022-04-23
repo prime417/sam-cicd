@@ -11,7 +11,7 @@ workflows:
   test_and_deploy:
     jobs:
       - sam/deploy:
-          context: "personal-AWS-context-$CIRCLE_BRANCH"
+          context: personal-AWS-context-<< pipeline.git.branch >>
           name: deploy-staging
           s3-bucket: my-s3-bucket
           stack-name: staging-stack
