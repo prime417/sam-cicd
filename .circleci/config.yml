@@ -27,7 +27,7 @@ workflows:
           context: personal-AWS-context-<< pipeline.git.branch >>
           name: deploy-staging
           requires:
-            - lambda-build
+            - build_and_test
           s3-bucket: prime123456
           stack-name: staging-stack
           template: template.yaml
