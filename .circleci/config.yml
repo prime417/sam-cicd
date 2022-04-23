@@ -2,7 +2,7 @@ version: '2.1'
 orbs:
   sam: circleci/aws-sam-serverless@3.2
 jobs:
-  lambda-build:
+  lambda_build:
     docker:
       - image: 'cimg/node:lts'
     steps:
@@ -10,7 +10,7 @@ jobs:
 workflows:
   test_and_deploy:
     jobs:
-      - lambda-build:
+      - lambda_build:
       - sam/deploy:
           context: personal-AWS-context-<< pipeline.git.branch >>
           name: deploy-staging
