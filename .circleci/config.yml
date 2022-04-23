@@ -1,16 +1,28 @@
 version: '2.1'
 orbs:
+  node: circleci/node@4.7.0
   sam: circleci/aws-sam-serverless@3.2
 jobs:
-  lambda_build:
+  build_and_test: # this can be any name you choose
     docker:
-      - image: 'cimg/node:lts'
+      - image: cimg/node:17.2.0
     steps:
-      - run: npm install
+      - checkout
+      - node/install-packages:
+          pkg-manager: yarn
+      - run:
+          command: yarn test
+          name: Run tests
+      - run:
+          command: yarn build
+          name: Build app
+      - persist_to_workspace:
+          root: ~/project
+          paths: .
 workflows:
-  test_and_deploy:
+  build_and_deploy:
     jobs:
-      - lambda_build
+      - build_and_test
       - sam/deploy:
           context: personal-AWS-context-<< pipeline.git.branch >>
           name: deploy-staging
