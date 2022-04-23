@@ -14,8 +14,8 @@ workflows:
       - sam/deploy:
           context: personal-AWS-context-<< pipeline.git.branch >>
           name: deploy-staging
-          requires:
-            - lambda-build
+          # requires:
+          #   - lambda-build
           s3-bucket: my-s3-bucket
           stack-name: staging-stack
           template: template.yaml
