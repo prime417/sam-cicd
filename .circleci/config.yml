@@ -10,7 +10,7 @@ jobs:
 workflows:
   test_and_deploy:
     jobs:
-      - lambda_build:
+      - lambda_build
       - sam/deploy:
           context: personal-AWS-context-<< pipeline.git.branch >>
           name: deploy-staging
